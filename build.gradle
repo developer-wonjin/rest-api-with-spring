@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.4.1'
+    id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'me.whiteship.demoinflearnrestapi'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-hateoas'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    implementation 'org.postgresql:postgresql'//애플레이케이션 쓸 때
+    implementation 'com.h2database:h2'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    testImplementation 'com.h2database:h2'//테스트용으로만
+    testImplementation 'org.springframework.restdocs:spring-restdocs-mockmvc'
+
+//	// modelmapper
+//	implementation group: 'org.modelmapper', name: 'modelmapper', version: '2.3.8'
+//	testImplementation group: 'pl.pragmatists', name: 'JUnitParams', version: '1.1.1'
+//	// https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-params
+//	testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-params', version: '5.3.2'
+//	testImplementation 'org.springframework.security:spring-security-test:5.3.13.RELEASE'
+//	ext['junit-jupiter.version'] = '5.7.1'
+//	// https://mvnrepository.com/artifact/org.asciidoctor/asciidoctor-gradle-plugin
+//	implementation group: 'org.asciidoctor', name: 'asciidoctor-gradle-plugin', version: '0.4.0'
+//	// https://mvnrepository.com/artifact/org.springframework.security.oauth.boot/spring-security-oauth2-autoconfigure
+//	implementation group: 'org.springframework.security.oauth.boot', name: 'spring-security-oauth2-autoconfigure', version: '2.3.12.RELEASE'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
